@@ -14,17 +14,21 @@ const customStyles = {
   },
 };
 
-const EditModal = ({modalIsOpen, setIsOpen, item}) => {
+const EditModal = ({modalIsOpen, setIsOpen, item, setReload}) => {
   function closeModal(){
     setIsOpen(false);
   }
 
+
 async function deleteTodo(){
+
+
 
   
   try{
     await Axios.delete(`todos/${item.id}`);
-    setIsOpen(prev => !prev)
+    setReload((prev)=> !prev);
+    setIsOpen(false);
   }catch(error){
     console.log(error);
   }

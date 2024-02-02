@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Axios } from '../../../api/server';
+import { ReloadContext } from '../../Pages/TodoPage';
 import TextInput from '../TextInput';
 import TodoButton from '../TodoButton';
 
-const TodoInput = ({setReload}) => {
+const TodoInput = () => {
   const [todoInput, setTodoInput] = useState(""); 
   
+  const {setReload} = useContext(ReloadContext);
+
+
+
   const AddTodo = async () =>{
     try{
       await Axios.post("todos", {title: todoInput});

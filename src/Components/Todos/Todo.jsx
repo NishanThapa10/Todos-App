@@ -23,6 +23,7 @@ const Todo = ({item, setReload}) => {
 
   const toogleCompleted = async ()=>{
     const data = {completed: !item.completed};
+
   
     try{
       await Axios.patch(`todos/${item.id}`, data);
@@ -32,7 +33,7 @@ const Todo = ({item, setReload}) => {
   
   return (
     <>
-    <EditModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} item={item} />
+    <EditModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} item={item} setReload={setReload}/>
       <div
         className={`${
           item.completed && "text-red1 line-through"
